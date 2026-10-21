@@ -1,215 +1,958 @@
-/* Variáveis de Cores (Estilo CBF) */
-:root {
-    --cor-verde: #009b3a;
-    --cor-amarelo: #fedf00;
-    --cor-azul: #002776;
-    --cor-fundo: #f4f7f6;
-    --cor-texto: #333333;
-    --cor-branco: #ffffff;
-}
 
-/* Reset Básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* =====================================================
+   SELEÇÃO HISTÓRICA — CBF HISTÓRIA
+   Arquivo: selecao.css
+   Estilos isolados para preservar o CSS original do site
+   ===================================================== */
 
-body {
+/* ================= VARIÁVEIS DA SEÇÃO ================= */
+
+#selecao-historica {
+    --sel-verde: #009b3a;
+    --sel-verde-escuro: #006b2b;
+    --sel-verde-campo: #167a42;
+    --sel-amarelo: #fedf00;
+    --sel-azul: #002776;
+    --sel-texto: #333333;
+    --sel-texto-suave: #626b66;
+    --sel-branco: #ffffff;
+    --sel-fundo: #f4f7f6;
+    --sel-borda: #e1e8e3;
+
+    width: 100%;
+    padding: 45px 20px;
+    margin: 40px 0;
+    background: var(--sel-fundo);
+    color: var(--sel-texto);
     font-family: 'Poppins', sans-serif;
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
     line-height: 1.6;
 }
 
-/* ================= HEADER / NAVEGAÇÃO ================= */
-.main-header {
-    background-color: var(--cor-azul);
+#selecao-historica *,
+#selecao-historica *::before,
+#selecao-historica *::after {
+    box-sizing: border-box;
+}
+
+/* ================= CABEÇALHO DA SEÇÃO ================= */
+
+#selecao-historica .cabecalho {
+    max-width: 850px;
+    margin: 0 auto 35px;
     padding: 15px 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    text-align: center;
 }
 
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Ajuda no celular */
-}
-
-.logo {
-    color: var(--cor-amarelo);
-    font-size: 1.5rem;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.logo span {
-    color: var(--cor-branco);
-    font-weight: 400;
-}
-
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-}
-
-.main-nav a {
-    color: var(--cor-branco);
-    text-decoration: none;
+#selecao-historica .voltar {
+    display: inline-block;
+    margin-bottom: 25px;
+    color: var(--sel-azul);
+    font-size: 14px;
     font-weight: 600;
-    font-size: 0.95rem;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-.main-nav a:hover {
-    background-color: var(--cor-amarelo);
-    color: var(--cor-azul);
+#selecao-historica .voltar:hover {
+    color: var(--sel-verde);
 }
 
-/* ================= CONTEÚDO PRINCIPAL ================= */
-.conteudo-site {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-/* Seção Hero (Introdução) */
-.hero-section {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-h1 {
-    font-size: 3rem;
+#selecao-historica .etiqueta {
+    margin: 0 0 10px;
+    color: var(--sel-verde-escuro);
+    font-size: 11px;
     font-weight: 800;
-    color: var(--cor-verde);
-    margin-bottom: 20px;
+    letter-spacing: 2px;
+    line-height: 1.6;
+}
+
+#selecao-historica .cabecalho h1 {
+    margin: 12px 0 18px;
+    color: var(--sel-verde);
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 800;
+    line-height: 1.2;
     text-transform: uppercase;
 }
 
-.intro-text {
-    background: var(--cor-branco);
-    padding: 30px;
-    border-radius: 12px;
+#selecao-historica .cabecalho h1 span {
+    color: var(--sel-azul);
+}
+
+#selecao-historica .subtitulo {
+    max-width: 680px;
     margin: 0 auto;
-    max-width: 800px; 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    border-left: 6px solid var(--cor-amarelo); /* Detalhe amarelo */
-    font-size: 1.1rem;
+    color: var(--sel-texto-suave);
+    font-size: 15px;
+    line-height: 1.8;
 }
 
-.intro-text p {
-    margin-bottom: 15px;
-}
-.intro-text p:last-child {
-    margin-bottom: 0;
+/* ================= PAINEL DE CONTROLE ================= */
+
+#selecao-historica .painel-controle {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto 25px;
+    padding: 22px;
+    border: 1px solid var(--sel-borda);
+    border-radius: 14px;
+    background: var(--sel-branco);
+    box-shadow: 0 5px 18px rgba(0, 39, 118, 0.06);
 }
 
-/* Títulos das Seções */
-h2 {
-    text-align: center;
-    color: var(--cor-azul);
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-    position: relative;
-}
-
-/* Tracinho amarelo embaixo do h2 */
-h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background-color: var(--cor-amarelo);
-    margin: 10px auto 40px auto;
-    border-radius: 2px;
-}
-
-.subtitulo-texto {
-    text-align: center;
-    color: #555555;
-    margin: -20px auto 40px auto;
-    max-width: 700px;
-    font-size: 1.05rem;
-}
-
-/* ================= GRID DE CARDS ================= */
-.grid-container {
+#selecao-historica .controle {
     display: grid;
-    /* Essa linha faz os cards se adaptarem na tela automaticamente */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-bottom: 60px;
+    gap: 9px;
+    min-width: 220px;
 }
 
-.card {
-    background: var(--cor-branco);
-    border-radius: 12px;
-    overflow: hidden; /* Faz a imagem respeitar as bordas arredondadas */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+#selecao-historica .controle label {
+    color: var(--sel-azul);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#selecao-historica .controle select {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 13px;
+    border: 1px solid #cbd8ce;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--sel-texto);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#selecao-historica .progresso {
+    width: min(280px, 100%);
+}
+
+#selecao-historica #contador {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--sel-azul);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+}
+
+#selecao-historica .barra-progresso {
+    width: 100%;
+    height: 9px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e5ece7;
+}
+
+#selecao-historica #progresso-preenchido {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+        90deg,
+        var(--sel-verde),
+        var(--sel-amarelo)
+    );
+    transition: width 0.35s ease;
+}
+
+/* ================= ÁREA DO CAMPO ================= */
+
+#selecao-historica .area-campo {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid var(--sel-borda);
+    border-radius: 16px;
+    background: var(--sel-branco);
+    box-shadow: 0 5px 20px rgba(0, 39, 118, 0.06);
+}
+
+#selecao-historica .legenda-campo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-bottom: 18px;
+    color: var(--sel-texto-suave);
+    font-size: 12px;
+}
+
+#selecao-historica .legenda-campo span:first-child {
+    color: var(--sel-azul);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+#selecao-historica .campo {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: 820px;
+    aspect-ratio: 0.82;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 3px solid #ffffff;
+    border-radius: 8px;
+    outline: 1px solid #d5e0d7;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 12.5%,
+            rgba(255, 255, 255, 0.07) 12.5%,
+            rgba(255, 255, 255, 0.07) 25%
+        ),
+        var(--sel-verde-campo);
+}
+
+#selecao-historica .campo::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+#selecao-historica .linha-meio {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.75);
+}
+
+#selecao-historica .circulo-central {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 29%;
+    aspect-ratio: 1;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#selecao-historica .area-superior,
+#selecao-historica .area-inferior {
+    position: absolute;
+    left: 24%;
+    width: 52%;
+    height: 13%;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+}
+
+#selecao-historica .area-superior {
+    top: 0;
+    border-top: 0;
+}
+
+#selecao-historica .area-inferior {
+    bottom: 0;
+    border-bottom: 0;
+}
+
+#selecao-historica .pequena-area-superior,
+#selecao-historica .pequena-area-inferior {
+    position: absolute;
+    left: 37%;
+    width: 26%;
+    height: 5%;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+}
+
+#selecao-historica .pequena-area-superior {
+    top: 0;
+    border-top: 0;
+}
+
+#selecao-historica .pequena-area-inferior {
+    bottom: 0;
+    border-bottom: 0;
+}
+
+#selecao-historica .marca-penalti-superior,
+#selecao-historica .marca-penalti-inferior {
+    position: absolute;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ffffff;
+    transform: translateX(-50%);
+}
+
+#selecao-historica .marca-penalti-superior {
+    top: 9%;
+}
+
+#selecao-historica .marca-penalti-inferior {
+    bottom: 9%;
+}
+
+#selecao-historica #jogadores-campo {
+    position: absolute;
+    inset: 0;
+}
+
+/* ================= POSIÇÕES DOS JOGADORES ================= */
+
+#selecao-historica .posicao {
+    position: absolute;
+    z-index: 2;
     display: flex;
     flex-direction: column;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 4px solid var(--cor-verde); /* Faixa verde embaixo da foto */
-}
-
-.card-content {
-    padding: 20px;
-    flex-grow: 1; /* Faz o conteúdo ocupar o espaço restante */
-}
-
-.card-content h3 {
-    color: var(--cor-verde);
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-}
-
-.card-content p {
-    font-size: 0.95rem;
-    color: #444444;
-}
-
-/* ================= RODAPÉ ================= */
-footer {
-    background-color: var(--cor-azul);
-    color: var(--cor-branco);
+    align-items: center;
+    gap: 5px;
+    width: 76px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #ffffff;
+    font-family: inherit;
     text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-    font-size: 0.9rem;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease;
 }
 
-/* Ajustes para Celular (Responsividade extra) */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.2rem;
+#selecao-historica .posicao:hover {
+    z-index: 5;
+    transform: translate(-50%, -50%) scale(1.07);
+}
+
+#selecao-historica .posicao:focus-visible {
+    outline: 3px solid var(--sel-amarelo);
+    outline-offset: 3px;
+}
+
+#selecao-historica .avatar-jogador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--sel-amarelo);
+    border-radius: 50%;
+    background: var(--sel-azul);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.25);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#selecao-historica .posicao.selecionado .avatar-jogador {
+    background: var(--sel-amarelo);
+    color: var(--sel-azul);
+}
+
+#selecao-historica .nome-campo {
+    display: block;
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+/* ================= PAINEL DE JOGADORES ================= */
+
+#selecao-historica .painel-jogador {
+    max-width: 1100px;
+    margin: 26px auto;
+    padding: 24px;
+    border: 1px solid var(--sel-borda);
+    border-radius: 14px;
+    background: var(--sel-branco);
+    box-shadow: 0 5px 18px rgba(0, 39, 118, 0.05);
+}
+
+#selecao-historica .painel-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+#selecao-historica .painel-titulo .etiqueta {
+    margin: 0 0 6px;
+}
+
+#selecao-historica .painel-titulo h2,
+#selecao-historica .resultado h2 {
+    margin: 0 0 12px;
+    color: var(--sel-azul);
+    font-size: clamp(21px, 3vw, 30px);
+    line-height: 1.3;
+    text-align: left;
+}
+
+#selecao-historica .icone-bola {
+    flex-shrink: 0;
+    font-size: 34px;
+}
+
+#selecao-historica #instrucao {
+    margin: 0;
+    color: var(--sel-texto-suave);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+#selecao-historica #detalhes-jogador {
+    margin-top: 16px;
+}
+
+#selecao-historica .ficha {
+    padding: 17px;
+    border-left: 4px solid var(--sel-amarelo);
+    border-radius: 0 10px 10px 0;
+    background: #f5f8f5;
+    line-height: 1.8;
+}
+
+#selecao-historica .ficha strong {
+    color: var(--sel-verde-escuro);
+}
+
+#selecao-historica .ficha p {
+    margin: 7px 0 0;
+    color: var(--sel-texto-suave);
+    font-size: 13px;
+}
+
+#selecao-historica .lista-jogadores {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+    margin-top: 20px;
+}
+
+#selecao-historica .cartao-jogador {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--sel-borda);
+    border-radius: 11px;
+    background: #ffffff;
+    color: var(--sel-texto);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#selecao-historica .cartao-jogador:hover {
+    border-color: var(--sel-verde);
+    background: #f6fbf7;
+    box-shadow: 0 5px 14px rgba(0, 107, 43, 0.08);
+    transform: translateY(-3px);
+}
+
+#selecao-historica .cartao-jogador:focus-visible {
+    outline: 3px solid var(--sel-amarelo);
+    outline-offset: 3px;
+}
+
+#selecao-historica .cartao-jogador:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#selecao-historica .cartao-jogador.escolhido {
+    border-color: var(--sel-verde);
+    background: #eaf6ed;
+}
+
+#selecao-historica .cartao-jogador strong {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--sel-azul);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#selecao-historica .cartao-jogador span {
+    display: block;
+    color: var(--sel-texto-suave);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* ================= BOTÕES DE AÇÃO ================= */
+
+#selecao-historica .acoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+#selecao-historica .botao {
+    min-height: 44px;
+    padding: 12px 19px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#selecao-historica .botao:hover {
+    filter: brightness(1.04);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#selecao-historica .botao:focus-visible {
+    outline: 3px solid var(--sel-amarelo);
+    outline-offset: 3px;
+}
+
+#selecao-historica .botao-principal {
+    background: var(--sel-verde);
+    color: #ffffff;
+}
+
+#selecao-historica .botao-secundario {
+    border-color: var(--sel-azul);
+    background: #ffffff;
+    color: var(--sel-azul);
+}
+
+#selecao-historica .botao-perigo {
+    border-color: #b33b3b;
+    background: #ffffff;
+    color: #a32424;
+}
+
+/* ================= RESULTADO FINAL ================= */
+
+#selecao-historica .resultado {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 25px;
+    border: 1px solid #d6c34d;
+    border-left: 5px solid var(--sel-amarelo);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffffff, #f2f8f2);
+}
+
+#selecao-historica .resultado .etiqueta {
+    margin-bottom: 9px;
+    color: var(--sel-verde-escuro);
+}
+
+#selecao-historica .resultado p:last-child {
+    margin: 0;
+    color: var(--sel-texto-suave);
+    line-height: 1.8;
+}
+
+/* ================= RODAPÉ DA SEÇÃO ================= */
+
+#selecao-historica .rodape {
+    max-width: 900px;
+    margin: 30px auto 0;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--sel-borda);
+    color: var(--sel-texto-suave);
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* ================= DIÁLOGO DE CONFIRMAÇÃO =================
+   O diálogo pode estar fora da seção no HTML.
+   Por isso, os estilos são definidos separadamente.
+   ========================================================== */
+
+#confirmacao.dialogo {
+    --dialogo-borda: #dce5de;
+    --dialogo-texto: #333333;
+    --dialogo-suave: #626b66;
+
+    width: min(420px, calc(100% - 32px));
+    max-width: 100%;
+    padding: 0;
+    border: 1px solid var(--dialogo-borda);
+    border-radius: 14px;
+    background: #ffffff;
+    color: var(--dialogo-texto);
+    font-family: 'Poppins', sans-serif;
+}
+
+#confirmacao.dialogo::backdrop {
+    background: rgba(0, 20, 10, 0.65);
+    backdrop-filter: blur(3px);
+}
+
+#confirmacao .dialogo-conteudo {
+    padding: 24px;
+}
+
+#confirmacao .dialogo-conteudo h2 {
+    margin: 0 0 12px;
+    color: #002776;
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+#confirmacao .dialogo-conteudo p {
+    margin: 0;
+    color: var(--dialogo-suave);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+#confirmacao .dialogo-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#confirmacao .botao {
+    min-height: 42px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#confirmacao .botao-secundario {
+    border: 1px solid #002776;
+    background: #ffffff;
+    color: #002776;
+}
+
+#confirmacao .botao-perigo {
+    border: 1px solid #a32424;
+    background: #a32424;
+    color: #ffffff;
+}
+
+/* ================= AVISO / NOTIFICAÇÃO ================= */
+
+#aviso.aviso {
+    --aviso-amarelo: #fedf00;
+
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2000;
+    width: max-content;
+    max-width: min(400px, calc(100% - 40px));
+    padding: 14px 18px;
+    border: 1px solid var(--aviso-amarelo);
+    border-radius: 10px;
+    background: #002776;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#aviso.aviso.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= ACESSIBILIDADE ================= */
+
+#selecao-historica button:focus-visible,
+#selecao-historica select:focus-visible,
+#selecao-historica a:focus-visible,
+#confirmacao button:focus-visible {
+    outline: 3px solid #fedf00;
+    outline-offset: 3px;
+}
+
+#selecao-historica [hidden] {
+    display: none !important;
+}
+
+/* ================= TABLETS ================= */
+
+@media (max-width: 900px) {
+    #selecao-historica .lista-jogadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .header-container {
+
+    #selecao-historica .painel-controle {
+        gap: 18px;
+    }
+
+    #selecao-historica .posicao {
+        width: 66px;
+    }
+
+    #selecao-historica .avatar-jogador {
+        width: 39px;
+        height: 39px;
+    }
+}
+
+/* ================= CELULARES ================= */
+
+@media (max-width: 600px) {
+    #selecao-historica {
+        padding: 28px 12px;
+        margin: 25px 0;
+    }
+
+    #selecao-historica .cabecalho {
+        padding: 8px 0 20px;
+        margin-bottom: 20px;
+    }
+
+    #selecao-historica .cabecalho h1 {
+        font-size: clamp(25px, 7vw, 34px);
+        letter-spacing: 0;
+    }
+
+    #selecao-historica .subtitulo {
+        font-size: 13px;
+    }
+
+    #selecao-historica .painel-controle {
+        align-items: stretch;
         flex-direction: column;
-        gap: 15px;
+        gap: 18px;
+        padding: 16px;
     }
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
+
+    #selecao-historica .controle {
+        min-width: 0;
     }
+
+    #selecao-historica .progresso {
+        width: 100%;
+    }
+
+    #selecao-historica #contador {
+        text-align: left;
+    }
+
+    #selecao-historica .area-campo {
+        padding: 12px 8px;
+    }
+
+    #selecao-historica .legenda-campo {
+        font-size: 10px;
+    }
+
+    #selecao-historica .campo {
+        aspect-ratio: 0.70;
+    }
+
+    #selecao-historica .posicao {
+        width: 52px;
+        gap: 3px;
+    }
+
+    #selecao-historica .avatar-jogador {
+        width: 31px;
+        height: 31px;
+        border-width: 1px;
+        font-size: 9px;
+    }
+
+    #selecao-historica .nome-campo {
+        padding: 3px 2px;
+        font-size: 8px;
+        line-height: 1.25;
+    }
+
+    #selecao-historica .painel-jogador {
+        padding: 16px;
+    }
+
+    #selecao-historica .painel-titulo h2 {
+        font-size: 21px;
+    }
+
+    #selecao-historica .icone-bola {
+        font-size: 26px;
+    }
+
+    #selecao-historica .lista-jogadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    #selecao-historica .cartao-jogador {
+        padding: 12px 10px;
+    }
+
+    #selecao-historica .cartao-jogador strong {
+        font-size: 12px;
+    }
+
+    #selecao-historica .cartao-jogador span {
+        font-size: 11px;
+    }
+
+    #selecao-historica .acoes {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #selecao-historica .acoes .botao {
+        width: 100%;
+        min-height: 46px;
+    }
+
+    #selecao-historica .resultado {
+        padding: 18px;
+    }
+
+    #confirmacao .dialogo-conteudo {
+        padding: 18px;
+    }
+
+    #confirmacao .dialogo-acoes {
+        flex-direction: column;
+    }
+
+    #confirmacao .dialogo-acoes .botao {
+        width: 100%;
+    }
+
+    #aviso.aviso {
+        right: 12px;
+        bottom: 12px;
+        max-width: calc(100% - 24px);
+    }
+}
+
+/* ================= CELULARES MUITO PEQUENOS ================= */
+
+@media (max-width: 360px) {
+    #selecao-historica .lista-jogadores {
+        grid-template-columns: 1fr;
+    }
+
+    #selecao-historica .campo {
+        aspect-ratio: 0.65;
+    }
+
+    #selecao-historica .posicao {
+        width: 46px;
+    }
+
+    #selecao-historica .avatar-jogador {
+        width: 28px;
+        height: 28px;
+        font-size: 8px;
+    }
+}
+
+/* ================= REDUÇÃO DE ANIMAÇÕES ================= */
+
+@media (prefers-reduced-motion: reduce) {
+    #selecao-historica *,
+    #selecao-historica *::before,
+    #selecao-historica *::after,
+    #aviso.aviso {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* ===== CORREÇÕES DE COMPATIBILIDADE COM O HTML ===== */
+
+/* O HTML usa h2 no título principal da seleção */
+#selecao-historica .cabecalho h2 {
+    margin: 12px 0 18px;
+    color: var(--sel-verde);
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Evita que o sublinhado global do style.css afete esse título */
+#selecao-historica .cabecalho h2::after {
+    content: none;
+    display: none;
+}
+
+/* O HTML usa h3 para o título da área de jogadores */
+#selecao-historica .painel-titulo h3 {
+    margin: 0 0 12px;
+    color: var(--sel-azul);
+    font-size: clamp(21px, 3vw, 30px);
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: left;
+}
+
+/* Título do resultado final */
+#selecao-historica .resultado h3 {
+    margin: 0 0 12px;
+    color: var(--sel-azul);
+    font-size: clamp(20px, 3vw, 27px);
+    line-height: 1.4;
+}
+
+/* Garante que o campo ocupe a área prevista */
+#selecao-historica #jogadores-campo {
+    position: absolute;
+    inset: 0;
+}
+
+/* Evita que o CSS original altere os botões da seção */
+#selecao-historica .botao {
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* O diálogo nativo precisa ficar centralizado quando aberto */
+#confirmacao.dialogo[open] {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+}
+
+/* Mantém o aviso oculto até o JavaScript ativá-lo */
+#aviso.aviso:not(.visivel) {
+    opacity: 0;
+    pointer-events: none;
 }
