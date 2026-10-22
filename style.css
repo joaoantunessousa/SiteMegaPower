@@ -1,11 +1,219 @@
+/* Variáveis de Cores (Estilo CBF) */
+:root {
+    --cor-verde: #009b3a;
+    --cor-amarelo: #fedf00;
+    --cor-azul: #002776;
+    --cor-fundo: #f4f7f6;
+    --cor-texto: #333333;
+    --cor-branco: #ffffff;
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* ================= HEADER / NAVEGAÇÃO ================= */
+.main-header {
+    background-color: var(--cor-azul);
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: var(--cor-amarelo);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: var(--cor-branco);
+    font-weight: 400;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.main-nav a {
+    color: var(--cor-branco);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.main-nav a:hover {
+    background-color: var(--cor-amarelo);
+    color: var(--cor-azul);
+}
+
+/* ================= CONTEÚDO PRINCIPAL ================= */
+.conteudo-site {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Seção Hero (Introdução) */
+.hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--cor-verde);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.intro-text {
+    background: var(--cor-branco);
+    padding: 30px;
+    border-radius: 12px;
+    margin: 0 auto;
+    max-width: 800px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-left: 6px solid var(--cor-amarelo);
+    font-size: 1.1rem;
+}
+
+.intro-text p {
+    margin-bottom: 15px;
+}
+.intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Títulos das Seções */
+h2 {
+    text-align: center;
+    color: var(--cor-azul);
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--cor-amarelo);
+    margin: 10px auto 40px auto;
+    border-radius: 2px;
+}
+
+.subtitulo-texto {
+    text-align: center;
+    color: #555555;
+    margin: -20px auto 40px auto;
+    max-width: 700px;
+    font-size: 1.05rem;
+}
+
+/* ================= GRID DE CARDS ================= */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.card {
+    background: var(--cor-branco);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 4px solid var(--cor-verde);
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    color: var(--cor-verde);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #444444;
+}
+
+/* ================= RODAPÉ ================= */
+footer {
+    background-color: var(--cor-azul);
+    color: var(--cor-branco);
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 
 /* =====================================================
-   SELEÇÃO HISTÓRICA — CBF HISTÓRIA
-   Arquivo: selecao.css
-   Estilos isolados para preservar o CSS original do site
+   SELEÇÃO HISTÓRICA — ESTILOS ISOLADOS
    ===================================================== */
-
-/* ================= VARIÁVEIS DA SEÇÃO ================= */
 
 #selecao-historica {
     --sel-verde: #009b3a;
@@ -34,27 +242,11 @@
     box-sizing: border-box;
 }
 
-/* ================= CABEÇALHO DA SEÇÃO ================= */
-
 #selecao-historica .cabecalho {
     max-width: 850px;
     margin: 0 auto 35px;
     padding: 15px 0;
     text-align: center;
-}
-
-#selecao-historica .voltar {
-    display: inline-block;
-    margin-bottom: 25px;
-    color: var(--sel-azul);
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-#selecao-historica .voltar:hover {
-    color: var(--sel-verde);
 }
 
 #selecao-historica .etiqueta {
@@ -66,16 +258,22 @@
     line-height: 1.6;
 }
 
-#selecao-historica .cabecalho h1 {
+#selecao-historica .cabecalho h2 {
     margin: 12px 0 18px;
     color: var(--sel-verde);
     font-size: clamp(28px, 4vw, 46px);
     font-weight: 800;
     line-height: 1.2;
+    text-align: center;
     text-transform: uppercase;
 }
 
-#selecao-historica .cabecalho h1 span {
+#selecao-historica .cabecalho h2::after {
+    content: none;
+    display: none;
+}
+
+#selecao-historica .cabecalho h2 span {
     color: var(--sel-azul);
 }
 
@@ -87,11 +285,9 @@
     line-height: 1.8;
 }
 
-/* ================= PAINEL DE CONTROLE ================= */
-
 #selecao-historica .painel-controle {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 25px;
     max-width: 1100px;
@@ -153,15 +349,9 @@
     width: 0;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(
-        90deg,
-        var(--sel-verde),
-        var(--sel-amarelo)
-    );
+    background: linear-gradient(90deg, var(--sel-verde), var(--sel-amarelo));
     transition: width 0.35s ease;
 }
-
-/* ================= ÁREA DO CAMPO ================= */
 
 #selecao-historica .area-campo {
     max-width: 1100px;
@@ -303,8 +493,6 @@
     inset: 0;
 }
 
-/* ================= POSIÇÕES DOS JOGADORES ================= */
-
 #selecao-historica .posicao {
     position: absolute;
     z-index: 2;
@@ -328,11 +516,6 @@
 #selecao-historica .posicao:hover {
     z-index: 5;
     transform: translate(-50%, -50%) scale(1.07);
-}
-
-#selecao-historica .posicao:focus-visible {
-    outline: 3px solid var(--sel-amarelo);
-    outline-offset: 3px;
 }
 
 #selecao-historica .avatar-jogador {
@@ -369,8 +552,6 @@
     overflow-wrap: anywhere;
 }
 
-/* ================= PAINEL DE JOGADORES ================= */
-
 #selecao-historica .painel-jogador {
     max-width: 1100px;
     margin: 26px auto;
@@ -389,15 +570,11 @@
     margin-bottom: 12px;
 }
 
-#selecao-historica .painel-titulo .etiqueta {
-    margin: 0 0 6px;
-}
-
-#selecao-historica .painel-titulo h2,
-#selecao-historica .resultado h2 {
+#selecao-historica .painel-titulo h3 {
     margin: 0 0 12px;
     color: var(--sel-azul);
     font-size: clamp(21px, 3vw, 30px);
+    font-weight: 700;
     line-height: 1.3;
     text-align: left;
 }
@@ -453,11 +630,7 @@
     font-family: inherit;
     text-align: left;
     cursor: pointer;
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #selecao-historica .cartao-jogador:hover {
@@ -465,11 +638,6 @@
     background: #f6fbf7;
     box-shadow: 0 5px 14px rgba(0, 107, 43, 0.08);
     transform: translateY(-3px);
-}
-
-#selecao-historica .cartao-jogador:focus-visible {
-    outline: 3px solid var(--sel-amarelo);
-    outline-offset: 3px;
 }
 
 #selecao-historica .cartao-jogador:disabled {
@@ -499,8 +667,6 @@
     line-height: 1.7;
 }
 
-/* ================= BOTÕES DE AÇÃO ================= */
-
 #selecao-historica .acoes {
     display: flex;
     flex-wrap: wrap;
@@ -518,22 +684,16 @@
     font-family: inherit;
     font-size: 13px;
     font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
     cursor: pointer;
-    transition:
-        transform 0.2s ease,
-        filter 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 #selecao-historica .botao:hover {
     filter: brightness(1.04);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-#selecao-historica .botao:focus-visible {
-    outline: 3px solid var(--sel-amarelo);
-    outline-offset: 3px;
 }
 
 #selecao-historica .botao-principal {
@@ -553,8 +713,6 @@
     color: #a32424;
 }
 
-/* ================= RESULTADO FINAL ================= */
-
 #selecao-historica .resultado {
     max-width: 1100px;
     margin: 28px auto;
@@ -565,18 +723,19 @@
     background: linear-gradient(135deg, #ffffff, #f2f8f2);
 }
 
-#selecao-historica .resultado .etiqueta {
-    margin-bottom: 9px;
-    color: var(--sel-verde-escuro);
+#selecao-historica .resultado h3 {
+    margin: 0 0 12px;
+    color: var(--sel-azul);
+    font-size: clamp(20px, 3vw, 27px);
+    line-height: 1.4;
 }
 
 #selecao-historica .resultado p:last-child {
     margin: 0;
     color: var(--sel-texto-suave);
     line-height: 1.8;
+    white-space: pre-line;
 }
-
-/* ================= RODAPÉ DA SEÇÃO ================= */
 
 #selecao-historica .rodape {
     max-width: 900px;
@@ -589,24 +748,22 @@
     text-align: center;
 }
 
-/* ================= DIÁLOGO DE CONFIRMAÇÃO =================
-   O diálogo pode estar fora da seção no HTML.
-   Por isso, os estilos são definidos separadamente.
-   ========================================================== */
-
+/* Modal e Avisos */
 #confirmacao.dialogo {
-    --dialogo-borda: #dce5de;
-    --dialogo-texto: #333333;
-    --dialogo-suave: #626b66;
-
     width: min(420px, calc(100% - 32px));
     max-width: 100%;
     padding: 0;
-    border: 1px solid var(--dialogo-borda);
+    border: 1px solid #dce5de;
     border-radius: 14px;
     background: #ffffff;
-    color: var(--dialogo-texto);
+    color: #333333;
     font-family: 'Poppins', sans-serif;
+}
+
+#confirmacao.dialogo[open] {
+    position: fixed;
+    inset: 0;
+    margin: auto;
 }
 
 #confirmacao.dialogo::backdrop {
@@ -625,9 +782,14 @@
     line-height: 1.4;
 }
 
+#confirmacao .dialogo-conteudo h2::after {
+    content: none;
+    display: none;
+}
+
 #confirmacao .dialogo-conteudo p {
     margin: 0;
-    color: var(--dialogo-suave);
+    color: #626b66;
     font-size: 14px;
     line-height: 1.8;
 }
@@ -661,11 +823,7 @@
     color: #ffffff;
 }
 
-/* ================= AVISO / NOTIFICAÇÃO ================= */
-
 #aviso.aviso {
-    --aviso-amarelo: #fedf00;
-
     position: fixed;
     right: 20px;
     bottom: 20px;
@@ -673,7 +831,7 @@
     width: max-content;
     max-width: min(400px, calc(100% - 40px));
     padding: 14px 18px;
-    border: 1px solid var(--aviso-amarelo);
+    border: 1px solid #fedf00;
     border-radius: 10px;
     background: #002776;
     color: #ffffff;
@@ -692,267 +850,77 @@
     transform: translateY(0);
 }
 
-/* ================= ACESSIBILIDADE ================= */
-
-#selecao-historica button:focus-visible,
-#selecao-historica select:focus-visible,
-#selecao-historica a:focus-visible,
-#confirmacao button:focus-visible {
-    outline: 3px solid #fedf00;
-    outline-offset: 3px;
-}
-
 #selecao-historica [hidden] {
     display: none !important;
 }
 
-/* ================= TABLETS ================= */
-
+/* Responsividade da Seleção */
 @media (max-width: 900px) {
     #selecao-historica .lista-jogadores {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
-    #selecao-historica .painel-controle {
-        gap: 18px;
-    }
-
     #selecao-historica .posicao {
         width: 66px;
     }
-
     #selecao-historica .avatar-jogador {
         width: 39px;
         height: 39px;
     }
 }
 
-/* ================= CELULARES ================= */
-
 @media (max-width: 600px) {
     #selecao-historica {
         padding: 28px 12px;
         margin: 25px 0;
     }
-
-    #selecao-historica .cabecalho {
-        padding: 8px 0 20px;
-        margin-bottom: 20px;
-    }
-
-    #selecao-historica .cabecalho h1 {
-        font-size: clamp(25px, 7vw, 34px);
-        letter-spacing: 0;
-    }
-
-    #selecao-historica .subtitulo {
-        font-size: 13px;
-    }
-
     #selecao-historica .painel-controle {
-        align-items: stretch;
         flex-direction: column;
         gap: 18px;
         padding: 16px;
     }
-
-    #selecao-historica .controle {
-        min-width: 0;
-    }
-
     #selecao-historica .progresso {
         width: 100%;
     }
-
     #selecao-historica #contador {
         text-align: left;
     }
-
     #selecao-historica .area-campo {
         padding: 12px 8px;
     }
-
-    #selecao-historica .legenda-campo {
-        font-size: 10px;
-    }
-
     #selecao-historica .campo {
         aspect-ratio: 0.70;
     }
-
     #selecao-historica .posicao {
         width: 52px;
         gap: 3px;
     }
-
     #selecao-historica .avatar-jogador {
         width: 31px;
         height: 31px;
-        border-width: 1px;
         font-size: 9px;
     }
-
     #selecao-historica .nome-campo {
         padding: 3px 2px;
         font-size: 8px;
-        line-height: 1.25;
     }
-
-    #selecao-historica .painel-jogador {
-        padding: 16px;
-    }
-
-    #selecao-historica .painel-titulo h2 {
-        font-size: 21px;
-    }
-
-    #selecao-historica .icone-bola {
-        font-size: 26px;
-    }
-
     #selecao-historica .lista-jogadores {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
     }
-
-    #selecao-historica .cartao-jogador {
-        padding: 12px 10px;
-    }
-
-    #selecao-historica .cartao-jogador strong {
-        font-size: 12px;
-    }
-
-    #selecao-historica .cartao-jogador span {
-        font-size: 11px;
-    }
-
     #selecao-historica .acoes {
         flex-direction: column;
         gap: 10px;
     }
-
     #selecao-historica .acoes .botao {
         width: 100%;
-        min-height: 46px;
-    }
-
-    #selecao-historica .resultado {
-        padding: 18px;
-    }
-
-    #confirmacao .dialogo-conteudo {
-        padding: 18px;
-    }
-
-    #confirmacao .dialogo-acoes {
-        flex-direction: column;
-    }
-
-    #confirmacao .dialogo-acoes .botao {
-        width: 100%;
-    }
-
-    #aviso.aviso {
-        right: 12px;
-        bottom: 12px;
-        max-width: calc(100% - 24px);
     }
 }
-
-/* ================= CELULARES MUITO PEQUENOS ================= */
 
 @media (max-width: 360px) {
     #selecao-historica .lista-jogadores {
         grid-template-columns: 1fr;
     }
-
     #selecao-historica .campo {
         aspect-ratio: 0.65;
     }
-
-    #selecao-historica .posicao {
-        width: 46px;
-    }
-
-    #selecao-historica .avatar-jogador {
-        width: 28px;
-        height: 28px;
-        font-size: 8px;
-    }
-}
-
-/* ================= REDUÇÃO DE ANIMAÇÕES ================= */
-
-@media (prefers-reduced-motion: reduce) {
-    #selecao-historica *,
-    #selecao-historica *::before,
-    #selecao-historica *::after,
-    #aviso.aviso {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-    }
-}
-
-/* ===== CORREÇÕES DE COMPATIBILIDADE COM O HTML ===== */
-
-/* O HTML usa h2 no título principal da seleção */
-#selecao-historica .cabecalho h2 {
-    margin: 12px 0 18px;
-    color: var(--sel-verde);
-    font-size: clamp(28px, 4vw, 46px);
-    font-weight: 800;
-    line-height: 1.2;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-/* Evita que o sublinhado global do style.css afete esse título */
-#selecao-historica .cabecalho h2::after {
-    content: none;
-    display: none;
-}
-
-/* O HTML usa h3 para o título da área de jogadores */
-#selecao-historica .painel-titulo h3 {
-    margin: 0 0 12px;
-    color: var(--sel-azul);
-    font-size: clamp(21px, 3vw, 30px);
-    font-weight: 700;
-    line-height: 1.3;
-    text-align: left;
-}
-
-/* Título do resultado final */
-#selecao-historica .resultado h3 {
-    margin: 0 0 12px;
-    color: var(--sel-azul);
-    font-size: clamp(20px, 3vw, 27px);
-    line-height: 1.4;
-}
-
-/* Garante que o campo ocupe a área prevista */
-#selecao-historica #jogadores-campo {
-    position: absolute;
-    inset: 0;
-}
-
-/* Evita que o CSS original altere os botões da seção */
-#selecao-historica .botao {
-    line-height: 1.5;
-    text-align: center;
-}
-
-/* O diálogo nativo precisa ficar centralizado quando aberto */
-#confirmacao.dialogo[open] {
-    position: fixed;
-    inset: 0;
-    margin: auto;
-}
-
-/* Mantém o aviso oculto até o JavaScript ativá-lo */
-#aviso.aviso:not(.visivel) {
-    opacity: 0;
-    pointer-events: none;
 }
