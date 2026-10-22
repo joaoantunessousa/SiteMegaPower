@@ -1,8 +1,6 @@
-
 /* =========================================================
    CBF HISTÓRIA — MONTE SUA SELEÇÃO HISTÓRICA
    Arquivo: selecao.js
-   Compatível com os IDs do HTML enviado
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -65,15 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // =====================================================
     // 2. BANCO DE JOGADORES HISTÓRICOS
     // =====================================================
-
-    // grupos:
-    // GOL = goleiros
-    // LD/LE = laterais
-    // ZAG = zagueiros
-    // VOL = volantes
-    // MEIO = meio-campistas
-    // PONTA = pontas
-    // ATA = atacantes
 
     const jogadores = [
         // GOLEIROS
@@ -286,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Craque da Seleção de 1970, reconhecido pela técnica e pelo chute potente."
         },
         {
-            id: "soc rates",
+            id: "socrates",
             nome: "Sócrates",
             grupos: ["MEIO"],
             periodo: "Décadas de 1970 e 1980",
@@ -423,9 +412,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. FORMAÇÕES E POSIÇÕES NO CAMPO
     // =====================================================
 
-    // x e y são porcentagens da área do campo.
-    // A baliza adversária fica na parte superior.
-
     const formacoes = {
         "4-3-3": [
             { id: "GOL", nome: "Goleiro", sigla: "GOL", grupos: ["GOL"], x: 50, y: 91 },
@@ -539,6 +525,13 @@ document.addEventListener("DOMContentLoaded", () => {
         temporizadorAviso = setTimeout(() => {
             aviso.classList.remove("visivel");
         }, 3500);
+    }
+
+    function renderizarTudo() {
+        renderizarCampo();
+        renderizarListaJogadores();
+        atualizarPainel();
+        atualizarProgresso();
     }
 
     // =====================================================
@@ -777,21 +770,9 @@ document.addEventListener("DOMContentLoaded", () => {
         progressoPreenchido.style.width =
             `${(quantidade / 11) * 100}%`;
 
-        progressoPreenchido.setAttribute(
-            "role",
-            "progressbar"
-        );
-
-        progressoPreenchido.setAttribute(
-            "aria-valuemin",
-            "0"
-        );
-
-        progressoPreenchido.setAttribute(
-            "aria-valuemax",
-            "11"
-        );
-
+        progressoPreenchido.setAttribute("role", "progressbar");
+        progressoPreenchido.setAttribute("aria-valuemin", "0");
+        progressoPreenchido.setAttribute("aria-valuemax", "11");
         progressoPreenchido.setAttribute(
             "aria-valuenow",
             String(quantidade)
@@ -825,7 +806,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return false;
         }
 
-        resumoResultado.textContent = gerarResumo();
+        resumoResultado.innerText = gerarResumo();
         resultado.hidden = false;
 
         resultado.scrollIntoView({
@@ -913,7 +894,7 @@ document.addEventListener("DOMContentLoaded", () => {
             escalação = restaurada;
 
             if (selecaoCompleta()) {
-                resumoResultado.textContent = gerarResumo();
+                resumoResultado.innerText = gerarResumo();
                 resultado.hidden = false;
             }
         } catch (erro) {
@@ -959,8 +940,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Alternativa para navegadores sem compartilhamento
-            // ou acesso à área de transferência.
             const campoTexto = document.createElement("textarea");
 
             campoTexto.value = texto;
@@ -980,166 +959,78 @@ document.addEventListener("DOMContentLoaded", () => {
                     "Escalação copiada! Agora é só colar onde quiser."
                 );
             } else {
-                mostrarAviso(
-                    "Não foi possível copiar automaticamente neste navegador."
-                );
+                mostrarAviso("Não foi possível copiar automaticamente.");
             }
         } catch (erro) {
-            if (erro.name === "AbortError") {
-                return;
-            }
-
-            console.error("Erro ao compartilhar:", erro);
-
-            mostrarAviso(
-                "Não foi possível compartilhar. Tente novamente."
-            );
-        }
-    }
-
-    // =====================================================
-    // 14. REINICIAR A ESCALAÇÃO
-    // =====================================================
-
-    function abrirConfirmacao() {
-        if (dialogo && typeof dialogo.showModal === "function") {
-            if (!dialogo.open) {
-                dialogo.showModal();
-            }
-        } else {
-            const confirmou = window.confirm(
-                "Deseja realmente reiniciar sua seleção?"
-            );
-
-            if (confirmou) {
-                limparSelecao();
+            if (erro.name !== "AbortError") {
+                mostrarAviso("Erro ao tentar compartilhar a escalação.");
             }
         }
     }
 
-    function limparSelecao() {
+    // =====================================================
+    // 14. LIMPAR / REINICIAR
+    // =====================================================
+
+    function reiniciarSelecao() {
         escalação = {};
         posicaoAtiva = null;
-
         resultado.hidden = true;
-        resumoResultado.textContent = "";
 
         try {
             localStorage.removeItem(CHAVE_STORAGE);
         } catch (erro) {
-            console.error("Erro ao remover a seleção salva:", erro);
-        }
-
-        if (dialogo && dialogo.open) {
-            dialogo.close();
+            console.error("Erro ao remover dados salvos:", erro);
         }
 
         renderizarTudo();
-        mostrarAviso("Sua seleção foi reiniciada!");
+        mostrarAviso("Sua escalação foi reiniciada.");
     }
 
     // =====================================================
-    // 15. TROCAR A FORMAÇÃO TÁTICA
+    // 15. EVENTOS DOS BOTÕES E DIÁLOGO
     // =====================================================
 
-    function trocarFormacao() {
-        const novaFormacao = formacaoSelect.value;
-
-        if (!formacoes[novaFormacao]) {
-            mostrarAviso("Formação inválida.");
-            formacaoSelect.value = formacaoAtual;
-            return;
-        }
-
-        formacaoAtual = novaFormacao;
-
-        const posicoesValidas = formacoes[formacaoAtual];
-        const jogadoresMantidos = {};
-        const jogadoresUsados = new Set();
-
-        // Preserva os jogadores que continuam compatíveis
-        // com as posições da nova formação.
-        posicoesValidas.forEach((posicao) => {
-            const idJogador = escalação[posicao.id];
-            const jogador = obterJogador(idJogador);
-
-            if (
-                jogador &&
-                jogadorPodeJogar(jogador, posicao) &&
-                !jogadoresUsados.has(jogador.id)
-            ) {
-                jogadoresMantidos[posicao.id] = jogador.id;
-                jogadoresUsados.add(jogador.id);
-            }
-        });
-
-        escalação = jogadoresMantidos;
-
-        if (
-            !posicoesValidas.some(
-                (posicao) => posicao.id === posicaoAtiva
-            )
-        ) {
-            posicaoAtiva = null;
-        }
-
+    formacaoSelect.addEventListener("change", (evento) => {
+        formacaoAtual = evento.target.value;
+        escalação = {};
+        posicaoAtiva = null;
         resultado.hidden = true;
 
         renderizarTudo();
-
-        mostrarAviso(
-            `Formação alterada para ${formacaoAtual}. Confira as posições do time.`
-        );
-    }
-
-    // =====================================================
-    // 16. ATUALIZAR A INTERFACE
-    // =====================================================
-
-    function renderizarTudo() {
-        renderizarCampo();
-        renderizarListaJogadores();
-        atualizarPainel();
-        atualizarProgresso();
-    }
-
-    // =====================================================
-    // 17. EVENTOS DOS BOTÕES E CONTROLES
-    // =====================================================
-
-    formacaoSelect.addEventListener("change", trocarFormacao);
+        mostrarAviso(`Formação alterada para ${formacaoAtual}.`);
+    });
 
     botaoSalvar.addEventListener("click", salvarSelecao);
+    botaoCompartilhar.addEventListener("click", compartilharSelecao);
 
-    botaoCompartilhar.addEventListener(
-        "click",
-        compartilharSelecao
-    );
-
-    botaoLimpar.addEventListener("click", abrirConfirmacao);
+    botaoLimpar.addEventListener("click", () => {
+        if (typeof dialogo.showModal === "function") {
+            dialogo.showModal();
+        } else {
+            if (confirm("Deseja realmente reiniciar sua seleção?")) {
+                reiniciarSelecao();
+            }
+        }
+    });
 
     if (botaoCancelarLimpeza) {
         botaoCancelarLimpeza.addEventListener("click", () => {
-            if (dialogo && dialogo.open) {
-                dialogo.close();
-            }
+            dialogo.close();
         });
     }
 
     if (botaoConfirmarLimpeza) {
-        botaoConfirmarLimpeza.addEventListener(
-            "click",
-            limparSelecao
-        );
+        botaoConfirmarLimpeza.addEventListener("click", () => {
+            reiniciarSelecao();
+            dialogo.close();
+        });
     }
 
     // =====================================================
-    // 18. INICIALIZAÇÃO
+    // 16. INICIALIZAÇÃO
     // =====================================================
 
     carregarSelecao();
     renderizarTudo();
-
-    console.log("CBF História: Seleção Histórica inicializada!");
 });
-
